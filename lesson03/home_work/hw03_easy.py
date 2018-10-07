@@ -20,7 +20,7 @@ def my_round(number, ndigits):
 print(my_round(2.1234567, 5))
 print(my_round(2.1999967, 5))
 print(my_round(2.9999967, 5))
-
+print()
 
 # Задание-2:
 # Дан шестизначный номер билета. Определить, является ли билет счастливым.
