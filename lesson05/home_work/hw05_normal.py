@@ -13,3 +13,48 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+
+
+import os
+import sys
+from easy import *
+
+check = True
+
+
+do = {
+    "cd": change_dir,
+    "ls": list_dir,
+    "del": del_dir,
+    "newdir": mk_dir
+}
+
+
+while check:
+    print()
+    print("1. Перейти в папку - cd")
+    print("2. Просмотреть содержимое текущей папки - ls")
+    print("3. Удалить папку - del")
+    print("4. Создать папку - newdir")
+    print("5. Выход - quit")
+    input_data = input("Введите название команды.\n")
+    if input_data == "quit":
+        print("Программа завершена")
+        break
+
+
+    try:
+        key = input_data
+    except IndexError:
+        key = None
+
+    if key:
+        if do.get(key):
+            do[key]()
+        else:
+            print("Задан неверный ключ")
+
+
+
+
+

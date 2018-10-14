@@ -5,24 +5,41 @@
 import os
 import sys
 
-for i in range(1, 10):
-    dir_name = "dir_" + str(i).strip()
+
+def mk_dir():
+    dir_name = input("Введите название создаваемой папки")
+
     try:
         os.mkdir(dir_name)
+        print("Папка " + dir_name + " создана")
     except FileExistsError:
         print("Такая папка уже существует!")
 
 
-for i in range(1, 10):
-    dir_name = "dir_" + str(i).strip()
+mk_dir()
+
+
+def del_dir():
+    dir_name = input("Введите название папки, которую хотите удалить.")
     try:
         os.rmdir(dir_name)
-    except FileExistsError:
+        print("Папка " + dir_name + " удалена")
+    except FileNotFoundError:
         print("Нет такой папки")
+
+
+del_dir()
+
 # Задача-2:
 # Напишите скрипт, отображающий папки текущей директории.
-dirs = [f for f in os.listdir() if os.path.isdir(f)]
-print(dirs)
+
+
+def list_dir():
+    dirs = [f for f in os.listdir() if os.path.isdir(f)]
+    return dirs
+
+
+print(list_dir())
 
 # Задача-3:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.

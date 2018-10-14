@@ -5,28 +5,67 @@
 import os
 import sys
 
-for i in range(1, 10):
-    dir_name = "dir_" + str(i).strip()
+
+def mk_dir():
+    dir_name = input("Введите название создаваемой папки")
+
     try:
         os.mkdir(dir_name)
+        print("Папка " + dir_name + " создана")
     except FileExistsError:
         print("Такая папка уже существует!")
 
 
-for i in range(1, 10):
-    dir_name = "dir_" + str(i).strip()
+
+
+def del_dir():
+    dir_name = input("Введите название папки, которую хотите удалить.")
     try:
         os.rmdir(dir_name)
-    except FileExistsError:
+        print("Папка " + dir_name + " удалена")
+    except FileNotFoundError:
         print("Нет такой папки")
+
+
+
 # Задача-2:
 # Напишите скрипт, отображающий папки текущей директории.
-dirs = [f for f in os.listdir() if os.path.isdir(f)]
-print(dirs)
+
+
+def list_dir():
+    dirs = [f for f in os.listdir() if os.path.isdir(f)]
+    print("Содержимое текущего каталога")
+    print(dirs)
+    print()
+
+
+
+
+
+def change_dir():
+    current_dir = os.getcwd()
+    cd_name = input("Куда перейти? \n для перехода на уровень выше введите '..'\n")
+
+    if cd_name == '..':
+        new_dir = os.path.split(current_dir)[0]
+    else:
+        new_dir = os.path.join(current_dir, cd_name)
+    try:
+        os.chdir(new_dir)
+        print("Переход совешен успешно")
+        print()
+    except FileNotFoundError:
+        print("Нет такой папки")
+
+
+
+
+
+
 
 # Задача-3:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
-
+"""
 this_file = os.path.basename(sys.argv[0])[:-3]
 new_file = this_file + '_copy.py'.strip()
 file_path = os.path.abspath(sys.argv[0])
@@ -36,5 +75,5 @@ file_read.close()
 new_file_write = open(new_file, 'w', encoding='UTF-8')
 new_file_write.write(f)
 new_file_write.close()
-
+"""
 
