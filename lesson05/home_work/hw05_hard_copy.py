@@ -75,7 +75,6 @@ def copy_file():
     new_file_write = open(new_file, 'w', encoding='UTF-8')
     new_file_write.write(f)
     new_file_write.close()
-    print("Копирование завершено")
 
 
 def list_file():
@@ -98,7 +97,6 @@ def change_dir():
         os.chdir(new_dir)
         print("Переход совешен успешно")
         print()
-        print(os.getcwd())
     except FileNotFoundError:
         print("Нет такой папки")
 
